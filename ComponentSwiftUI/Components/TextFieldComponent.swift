@@ -132,12 +132,13 @@ struct TextFieldComponentView: View {
                    .padding()
                    .background(Color.blue.opacity(0.1))
                    .clipShape(Capsule())
-
+#if os(iOS)
                // TextField with Background Blur (for more depth)
                TextField("Background Blur TextField", text: $text)
                    .padding()
                    .background(BlurView(style: .systemMaterial))
                    .cornerRadius(8)
+#endif
 
                // TextField with Gradient Border
                TextField("Gradient Border TextField", text: $text)
@@ -175,7 +176,7 @@ extension View {
         }
     }
 }
-
+#if os(iOS)
 // Helper view for background blur (for more advanced visual effects)
 struct BlurView: UIViewRepresentable {
     var style: UIBlurEffect.Style
@@ -187,3 +188,4 @@ struct BlurView: UIViewRepresentable {
 
     func updateUIView(_ uiView: UIVisualEffectView, context: Context) {}
 }
+#endif

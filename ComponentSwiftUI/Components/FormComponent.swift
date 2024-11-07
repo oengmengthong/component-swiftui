@@ -18,7 +18,6 @@ let FormComponent: Component = Component(
             HStack {
                 Image(systemName: "phone.fill").foregroundColor(.green)
                 TextField("Phone Number", text: .constant(""))
-                    .keyboardType(.phonePad)
             }
         }
 
@@ -49,44 +48,46 @@ struct FullStyledFormComponentView: View {
     @State private var preferredLanguage: String = "English"
 
     var body: some View {
-        
-            Form {
-                // Personal Details Section
-                Section(header: Text("Personal Details").font(.headline)) {
-                    TextField("First Name", text: $firstName)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    TextField("Last Name", text: $lastName)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    DatePicker("Date of Birth", selection: $dateOfBirth, displayedComponents: .date)
-                        .datePickerStyle(CompactDatePickerStyle())
+        Form {
+            // Personal Details Section
+            Section(header: Text("Personal Details").font(.headline)) {
+                TextField("First Name", text: $firstName)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                TextField("Last Name", text: $lastName)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                DatePicker("Date of Birth", selection: $dateOfBirth, displayedComponents: .date)
+                    .datePickerStyle(CompactDatePickerStyle())
+            }
+            
+            // Contact Info Section
+            Section(header: Text("Contact Info").font(.headline)) {
+                HStack {
+                    Image(systemName: "envelope.fill").foregroundColor(.blue)
+                    TextField("Email", text: $email)
+                        #if os(iOS)
+                        .keyboardType(.emailAddress)
+                        #endif
                 }
-                
-                // Contact Info Section
-                Section(header: Text("Contact Info").font(.headline)) {
-                    HStack {
-                        Image(systemName: "envelope.fill").foregroundColor(.blue)
-                        TextField("Email", text: $email)
-                            .keyboardType(.emailAddress)
-                    }
-                    HStack {
-                        Image(systemName: "phone.fill").foregroundColor(.green)
-                        TextField("Phone Number", text: $phoneNumber)
-                            .keyboardType(.phonePad)
-                    }
-                }
-                
-                // Preferences Section
-                Section(header: Text("Preferences").font(.headline)) {
-                    Toggle("Subscribe to Newsletter", isOn: $subscribeNewsletter)
-                    Picker("Preferred Language", selection: $preferredLanguage) {
-                        Text("English").tag("English")
-                        Text("French").tag("French")
-                        Text("Spanish").tag("Spanish")
-                    }
+                HStack {
+                    Image(systemName: "phone.fill").foregroundColor(.green)
+                    TextField("Phone Number", text: $phoneNumber)
+                        #if os(iOS)
+                        .keyboardType(.phonePad)
+                        #endif
                 }
             }
-            .formStyle(GroupedFormStyle())
-            .padding()
-        
+            
+            // Preferences Section
+            Section(header: Text("Preferences").font(.headline)) {
+                Toggle("Subscribe to Newsletter", isOn: $subscribeNewsletter)
+                Picker("Preferred Language", selection: $preferredLanguage) {
+                    Text("English").tag("English")
+                    Text("French").tag("French")
+                    Text("Spanish").tag("Spanish")
+                }
+            }
+        }
+        .formStyle(GroupedFormStyle())
+        .padding()
     }
 }

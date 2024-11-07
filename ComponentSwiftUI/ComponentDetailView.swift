@@ -9,8 +9,16 @@ struct ComponentDetailView: View {
 
     var body: some View {
         VStack {
-            TabView(selection: $selectedTab) {
-                // UI Preview Tab
+            // Custom segmented control at the top
+            Picker("", selection: $selectedTab) {
+                Text("UI Preview").tag(0)
+                Text("Code").tag(1)
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            .padding(.horizontal, 16)
+
+            // Content based on selected tab
+            if selectedTab == 0 {
                 VStack {
                     content
                         .frame(maxWidth: .infinity)
@@ -18,13 +26,7 @@ struct ComponentDetailView: View {
                         .cornerRadius(8)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .tabItem {
-                    Image(systemName: "eye")
-                    Text("UI Preview")
-                }
-                .tag(0)
-
-                // Code Tab
+            } else {
                 VStack(alignment: .leading, spacing: 20) {
                     ScrollView(.vertical) {
                         Text(code)
@@ -35,14 +37,10 @@ struct ComponentDetailView: View {
                     }
                     .padding()
                 }
-                .tabItem {
-                    Image(systemName: "chevron.left.slash.chevron.right")
-                    Text("Code")
-                }
-                .tag(1)
             }
         }
         .navigationTitle(title)
+#if os(iOS)
         .navigationBarItems(trailing: Button(action: {
             copyCodeToClipboard()
         }) {
@@ -50,6 +48,7 @@ struct ComponentDetailView: View {
                 .font(.title3)
                 .foregroundColor(.blue)
         })
+        #endif
         .alert(isPresented: $showCopyAlert) {
             Alert(
                 title: Text("Copied"),
@@ -85,25 +84,5 @@ struct ComponentDetailView_Previews: PreviewProvider {
                     .foregroundColor(.blue)
             )
         )
-    }
-}
-
-// A UIViewRepresentable to display large amounts of code using UITextView for better scrollability
-struct CodeTextView: UIViewRepresentable {
-    let code: String
-
-    func makeUIView(context: Context) -> UITextView {
-        let textView = UITextView()
-        textView.isEditable = false
-        textView.isScrollEnabled = true
-        textView.backgroundColor = .clear
-        textView.textColor = UIColor.label
-        textView.font = UIFont.monospacedSystemFont(ofSize: 14, weight: .regular)
-        textView.text = code
-        return textView
-    }
-
-    func updateUIView(_ uiView: UITextView, context: Context) {
-        uiView.text = code
     }
 }

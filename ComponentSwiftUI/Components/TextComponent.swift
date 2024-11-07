@@ -1,5 +1,6 @@
 import SwiftUI
 
+
 let TextComponent: Component = Component(
     title: "Text",
     codeSnippet: """
@@ -229,15 +230,16 @@ struct TextComponentView: View {
                         axis: (x: 1, y: 1, z: 0)
                     )
                 
+#if os(iOS)
                 // Text with Background Blur
                 Text("Text with Background Blur")
                     .font(.title)
                     .padding()
                     .background(BlurView(style: .systemMaterial))
                     .cornerRadius(8)
+#endif
             }
             .padding()
         }
     }
 }
-
