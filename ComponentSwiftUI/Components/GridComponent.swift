@@ -28,22 +28,24 @@ let GridComponent: Component = Component(
     .padding()
     """,
     view: AnyView(
-        Grid {
-            GridRow {
-                Color.red.frame(width: 50, height: 50)
-                Color.blue.frame(width: 50, height: 50)
-                Color.green.frame(width: 50, height: 50)
-            }
-
-            GridRow {
-                ForEach(1..<4) { index in
-                    Text("Cell \(index)")
-                        .frame(width: 50, height: 50)
-                        .background(Color.yellow)
-                        .cornerRadius(5)
+        ScrollView{
+            Grid {
+                GridRow {
+                    Color.red.frame(width: 50, height: 50)
+                    Color.blue.frame(width: 50, height: 50)
+                    Color.green.frame(width: 50, height: 50)
+                }
+                
+                GridRow {
+                    ForEach(1..<4) { index in
+                        Text("Cell \(index)")
+                            .frame(width: 50, height: 50)
+                            .background(Color.yellow)
+                            .cornerRadius(5)
+                    }
                 }
             }
+            .padding()
         }
-        .padding()
     )
 )

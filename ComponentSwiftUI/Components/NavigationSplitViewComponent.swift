@@ -18,12 +18,14 @@ let NavigationSplitViewComponent: Component = Component(
     }
     """,
     view: AnyView(
-        NavigationSplitView {
-            List(1..<6) { index in
-                NavigationLink("Item \(index)", destination: Text("Detail View \(index)"))
+        ScrollView{
+            NavigationSplitView {
+                List(1..<6) { index in
+                    NavigationLink("Item \(index)", destination: Text("Detail View \(index)"))
+                }
+            } detail: {
+                Text("Select an item to see details")
             }
-        } detail: {
-            Text("Select an item to see details")
         }
     )
 )

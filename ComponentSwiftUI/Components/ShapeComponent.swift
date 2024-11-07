@@ -42,6 +42,7 @@ let ShapeComponent: Component = Component(
     .padding()
     """,
     view: AnyView(
+        ScrollView{
         VStack(spacing: 20) {
             Rectangle()
                 .fill(Color.blue)
@@ -73,5 +74,6 @@ let ShapeComponent: Component = Component(
             .frame(width: 100, height: 100)
         }
         .padding()
+        }
     )
 )

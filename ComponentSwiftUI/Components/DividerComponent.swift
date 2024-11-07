@@ -21,15 +21,17 @@ let DividerComponent: Component = Component(
     .padding()
     """,
     view: AnyView(
-        VStack(spacing: 20) {
-            Text("Above the Divider")
-                .font(.title)
-
-            Divider()
-
-            Text("Below the Divider")
-                .font(.title)
+        ScrollView{
+            VStack(spacing: 20) {
+                Text("Above the Divider")
+                    .font(.title)
+                
+                Divider()
+                
+                Text("Below the Divider")
+                    .font(.title)
+            }
+            .padding()
         }
-        .padding()
     )
 )

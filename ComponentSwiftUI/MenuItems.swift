@@ -40,7 +40,7 @@ let menuItems: [String: [String]] = [
     "Charts Framework": ["Chart", "BarMark", "LineMark"],
     "Gestures": ["TapGesture", "LongPressGesture", "DragGesture"],
     "State and Data Flow": ["@State", "@Binding", "@ObservedObject"],
-    "New in iOS 17": ["Observation API", "Custom Layouts", "Macro System"],
+    "New in iOS 18": ["Observation API", "Custom Layouts", "Macro System"],
     "Modifiers and Environment": [".foregroundColor()", ".font()", ".padding()"],
     "Accessibility": [".accessibilityLabel()", ".accessibilityValue()"],
     "Deprecated Components": ["NavigationView", "ActionSheet"],

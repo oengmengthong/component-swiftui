@@ -87,58 +87,60 @@ struct ToggleComponentView: View {
     @State private var isCapsuleOn = true
 
     var body: some View {
-        VStack(spacing: 20) {
-            // Default Toggle
-            Toggle("Default Toggle", isOn: $isDefaultOn)
-
-            // Styled Toggle with Green Switch Style
-            Toggle("Styled Toggle", isOn: $isStyledOn)
-                .toggleStyle(SwitchToggleStyle(tint: .green))
-
-            // Checkbox Toggle
-            Toggle("Checkbox Toggle", isOn: $isCheckboxOn)
-                .toggleStyle(CheckboxToggleStyle())
-
-            // Gradient Background Toggle
-            Toggle("Gradient Toggle", isOn: $isGradientOn)
+        ScrollView{
+            VStack(spacing: 20) {
+                // Default Toggle
+                Toggle("Default Toggle", isOn: $isDefaultOn)
+                
+                // Styled Toggle with Green Switch Style
+                Toggle("Styled Toggle", isOn: $isStyledOn)
+                    .toggleStyle(SwitchToggleStyle(tint: .green))
+                
+                // Checkbox Toggle
+                Toggle("Checkbox Toggle", isOn: $isCheckboxOn)
+                    .toggleStyle(CheckboxToggleStyle())
+                
+                // Gradient Background Toggle
+                Toggle("Gradient Toggle", isOn: $isGradientOn)
+                    .padding()
+                    .background(
+                        LinearGradient(gradient: Gradient(colors: [.purple, .blue]), startPoint: .leading, endPoint: .trailing)
+                    )
+                    .cornerRadius(8)
+                    .toggleStyle(SwitchToggleStyle(tint: .white))
+                    .foregroundColor(.white)
+                
+                // Toggle with Icon Labels
+                HStack {
+                    Image(systemName: isIconOn ? "lock.fill" : "lock.open.fill")
+                        .foregroundColor(isIconOn ? .red : .green)
+                    Toggle("Lock Toggle", isOn: $isIconOn)
+                        .labelsHidden()
+                }
                 .padding()
-                .background(
-                    LinearGradient(gradient: Gradient(colors: [.purple, .blue]), startPoint: .leading, endPoint: .trailing)
-                )
+                .background(Color.gray.opacity(0.1))
                 .cornerRadius(8)
-                .toggleStyle(SwitchToggleStyle(tint: .white))
-                .foregroundColor(.white)
-
-            // Toggle with Icon Labels
-            HStack {
-                Image(systemName: isIconOn ? "lock.fill" : "lock.open.fill")
-                    .foregroundColor(isIconOn ? .red : .green)
-                Toggle("Lock Toggle", isOn: $isIconOn)
-                    .labelsHidden()
+                
+                // Capsule Toggle with Custom Colors
+                Toggle("Capsule Toggle", isOn: $isCapsuleOn)
+                    .toggleStyle(SwitchToggleStyle(tint: isCapsuleOn ? .blue : .gray))
+                    .padding()
+                    .background(isCapsuleOn ? Color.blue.opacity(0.2) : Color.gray.opacity(0.2))
+                    .clipShape(Capsule())
+                    .padding(.horizontal)
+                
+                // Toggle with Shadow and Outline
+                Toggle("Outlined Toggle", isOn: $isGradientOn)
+                    .padding()
+                    .background(Color.white)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(LinearGradient(gradient: Gradient(colors: [.pink, .orange]), startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 2)
+                    )
+                    .shadow(color: .gray.opacity(0.4), radius: 5, x: 1, y: 1)
+                    .toggleStyle(SwitchToggleStyle(tint: .orange))
             }
             .padding()
-            .background(Color.gray.opacity(0.1))
-            .cornerRadius(8)
-
-            // Capsule Toggle with Custom Colors
-            Toggle("Capsule Toggle", isOn: $isCapsuleOn)
-                .toggleStyle(SwitchToggleStyle(tint: isCapsuleOn ? .blue : .gray))
-                .padding()
-                .background(isCapsuleOn ? Color.blue.opacity(0.2) : Color.gray.opacity(0.2))
-                .clipShape(Capsule())
-                .padding(.horizontal)
-
-            // Toggle with Shadow and Outline
-            Toggle("Outlined Toggle", isOn: $isGradientOn)
-                .padding()
-                .background(Color.white)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(LinearGradient(gradient: Gradient(colors: [.pink, .orange]), startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 2)
-                )
-                .shadow(color: .gray.opacity(0.4), radius: 5, x: 1, y: 1)
-                .toggleStyle(SwitchToggleStyle(tint: .orange))
         }
-        .padding()
     }
 }

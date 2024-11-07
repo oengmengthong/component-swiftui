@@ -21,15 +21,17 @@ let GeometryReaderComponent: Component = Component(
     .padding()
     """,
     view: AnyView(
-        GeometryReader { geometry in
-            VStack {
-                Text("Width: \(geometry.size.width, specifier: "%.2f")")
-                Text("Height: \(geometry.size.height, specifier: "%.2f")")
+        ScrollView{
+            GeometryReader { geometry in
+                VStack {
+                    Text("Width: \(geometry.size.width, specifier: "%.2f")")
+                    Text("Height: \(geometry.size.height, specifier: "%.2f")")
+                }
+                .frame(width: geometry.size.width, height: geometry.size.height)
+                .background(Color.orange.opacity(0.5))
             }
-            .frame(width: geometry.size.width, height: geometry.size.height)
-            .background(Color.orange.opacity(0.5))
+            .frame(height: 150)
+            .padding()
         }
-        .frame(height: 150)
-        .padding()
     )
 )

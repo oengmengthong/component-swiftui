@@ -23,17 +23,19 @@ let AlignmentGuideComponent: Component = Component(
     .background(Color.gray.opacity(0.2))
     """,
     view: AnyView(
-        HStack(alignment: .bottom) {
-            Text("First")
-                .alignmentGuide(.bottom) { d in d[.bottom] - 10 }
-            
-            Text("Second")
-                .background(Color.red.opacity(0.3))
-            
-            Text("Third")
-                .alignmentGuide(.bottom) { d in d[.bottom] + 20 }
+        ScrollView{
+            HStack(alignment: .bottom) {
+                Text("First")
+                    .alignmentGuide(.bottom) { d in d[.bottom] - 10 }
+                
+                Text("Second")
+                    .background(Color.red.opacity(0.3))
+                
+                Text("Third")
+                    .alignmentGuide(.bottom) { d in d[.bottom] + 20 }
+            }
+            .padding()
+            .background(Color.gray.opacity(0.2))
         }
-        .padding()
-        .background(Color.gray.opacity(0.2))
     )
 )

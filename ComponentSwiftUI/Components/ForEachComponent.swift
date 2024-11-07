@@ -20,14 +20,16 @@ let ForEachComponent: Component = Component(
     .padding()
     """,
     view: AnyView(
-        VStack {
-            ForEach(1..<6) { index in
-                Text("Item \(index)")
-                    .padding()
-                    .background(Color.blue.opacity(0.3))
-                    .cornerRadius(10)
+        ScrollView{
+            VStack {
+                ForEach(1..<6) { index in
+                    Text("Item \(index)")
+                        .padding()
+                        .background(Color.blue.opacity(0.3))
+                        .cornerRadius(10)
+                }
             }
+            .padding()
         }
-        .padding()
     )
 )

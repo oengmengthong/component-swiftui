@@ -28,22 +28,24 @@ let HStackComponent: Component = Component(
     .padding()
     """,
     view: AnyView(
-        HStack(alignment: .center, spacing: 20) {
-            Text("Left")
-                .padding()
-                .background(Color.red)
-                .cornerRadius(10)
-
-            Text("Center")
-                .padding()
-                .background(Color.orange)
-                .cornerRadius(10)
-
-            Text("Right")
-                .padding()
-                .background(Color.purple)
-                .cornerRadius(10)
+        ScrollView{
+            HStack(alignment: .center, spacing: 20) {
+                Text("Left")
+                    .padding()
+                    .background(Color.red)
+                    .cornerRadius(10)
+                
+                Text("Center")
+                    .padding()
+                    .background(Color.orange)
+                    .cornerRadius(10)
+                
+                Text("Right")
+                    .padding()
+                    .background(Color.purple)
+                    .cornerRadius(10)
+            }
+            .padding()
         }
-        .padding()
     )
 )

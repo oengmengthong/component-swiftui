@@ -11,10 +11,13 @@ struct ComponentDetailView: View {
         VStack {
             TabView(selection: $selectedTab) {
                 // UI Preview Tab
-                content
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .cornerRadius(8)
+                VStack {
+                    content
+                        .frame(maxWidth: .infinity)
+                        .padding(.horizontal, 16)
+                        .cornerRadius(8)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .tabItem {
                     Image(systemName: "eye")
                     Text("UI Preview")
@@ -23,15 +26,14 @@ struct ComponentDetailView: View {
 
                 // Code Tab
                 VStack(alignment: .leading, spacing: 20) {
-                    
-                    ScrollView(.vertical){
+                    ScrollView(.vertical) {
                         Text(code)
                             .font(.system(.body, design: .monospaced))
                             .padding()
                             .background(Color.gray.opacity(0.1))
                             .cornerRadius(8)
-                            
-                    }.padding()
+                    }
+                    .padding()
                 }
                 .tabItem {
                     Image(systemName: "chevron.left.slash.chevron.right")
@@ -47,7 +49,6 @@ struct ComponentDetailView: View {
             Image(systemName: "doc.on.doc")
                 .font(.title3)
                 .foregroundColor(.blue)
-        
         })
         .alert(isPresented: $showCopyAlert) {
             Alert(
