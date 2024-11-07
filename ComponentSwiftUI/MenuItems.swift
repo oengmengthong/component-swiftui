@@ -74,6 +74,11 @@ let components: [String: Component] = [
     "ScrollView": ScrollViewComponent,
     "List": ListComponent,
     "Form": FormComponent,
-    "Section": SectionComponent
+    "Section": SectionComponent,
+    "Button" : ButtonComponent,
+    "Toggle" : ToggleComponent,
+    "Slider" : SliderComponent,
+    "Stepper": StepperComponent,
+    "TextField": TextFieldComponent,
     // Add more components here
 ]

@@ -78,7 +78,7 @@ let ImageComponent: Component = Component(
                 .clipped()
                 .foregroundColor(.blue)
 
-            Image("exampleImage") // Replace with an image from your assets
+            Image(.image)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 150, height: 100)
@@ -86,14 +86,14 @@ let ImageComponent: Component = Component(
                 .cornerRadius(10)
                 .shadow(color: .gray, radius: 5, x: 2, y: 2)
 
-            Image("exampleImage") // Replace with an image from your assets
+            Image(.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 150)
                 .border(Color.gray, width: 1)
                 .padding()
 
-            Image("exampleImage") // Replace with an image from your assets
+            Image(.image)
                 .resizable()
                 .scaledToFit()
                 .overlay(

@@ -11,16 +11,10 @@ struct ComponentDetailView: View {
         VStack {
             TabView(selection: $selectedTab) {
                 // UI Preview Tab
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 20) {
-                        content
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .border(Color.gray, width: 1)
-                            .cornerRadius(8)
-                    }
+                content
+                    .frame(maxWidth: .infinity)
                     .padding()
-                }
+                    .cornerRadius(8)
                 .tabItem {
                     Image(systemName: "eye")
                     Text("UI Preview")
@@ -28,30 +22,16 @@ struct ComponentDetailView: View {
                 .tag(0)
 
                 // Code Tab
-                ScrollView(.horizontal) {
-                    VStack(alignment: .leading, spacing: 20) {
-                        HStack {
-                            Text("Code")
-                                .font(.title2)
-                                .padding(.bottom, 10)
-                            Spacer()
-                            Button(action: {
-                                copyCodeToClipboard()
-                            }) {
-                                Image(systemName: "doc.on.doc")
-                                    .font(.title3)
-                                    .foregroundColor(.blue)
-                                Text("Copy")
-                                    .foregroundColor(.blue)
-                            }
-                        }
+                VStack(alignment: .leading, spacing: 20) {
+                    
+                    ScrollView(.vertical){
                         Text(code)
                             .font(.system(.body, design: .monospaced))
                             .padding()
                             .background(Color.gray.opacity(0.1))
                             .cornerRadius(8)
-                    }
-                    .padding()
+                            
+                    }.padding()
                 }
                 .tabItem {
                     Image(systemName: "chevron.left.slash.chevron.right")
@@ -61,6 +41,14 @@ struct ComponentDetailView: View {
             }
         }
         .navigationTitle(title)
+        .navigationBarItems(trailing: Button(action: {
+            copyCodeToClipboard()
+        }) {
+            Image(systemName: "doc.on.doc")
+                .font(.title3)
+                .foregroundColor(.blue)
+        
+        })
         .alert(isPresented: $showCopyAlert) {
             Alert(
                 title: Text("Copied"),
@@ -96,5 +84,25 @@ struct ComponentDetailView_Previews: PreviewProvider {
                     .foregroundColor(.blue)
             )
         )
+    }
+}
+
+// A UIViewRepresentable to display large amounts of code using UITextView for better scrollability
+struct CodeTextView: UIViewRepresentable {
+    let code: String
+
+    func makeUIView(context: Context) -> UITextView {
+        let textView = UITextView()
+        textView.isEditable = false
+        textView.isScrollEnabled = true
+        textView.backgroundColor = .clear
+        textView.textColor = UIColor.label
+        textView.font = UIFont.monospacedSystemFont(ofSize: 14, weight: .regular)
+        textView.text = code
+        return textView
+    }
+
+    func updateUIView(_ uiView: UITextView, context: Context) {
+        uiView.text = code
     }
 }

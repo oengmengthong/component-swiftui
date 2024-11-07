@@ -6,6 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		69523BF32CDC6C7E0063729F /* Splash in Frameworks */ = {isa = PBXBuildFile; productRef = 69523BF22CDC6C7E0063729F /* Splash */; };
+		69523BF52CDC6C7E0063729F /* SplashHTMLGen in Frameworks */ = {isa = PBXBuildFile; productRef = 69523BF42CDC6C7E0063729F /* SplashHTMLGen */; };
+		69523BF72CDC6C7E0063729F /* SplashImageGen in Frameworks */ = {isa = PBXBuildFile; productRef = 69523BF62CDC6C7E0063729F /* SplashImageGen */; };
+		69523BF92CDC6C7E0063729F /* SplashMarkdown in Frameworks */ = {isa = PBXBuildFile; productRef = 69523BF82CDC6C7E0063729F /* SplashMarkdown */; };
+		69523BFB2CDC6C7E0063729F /* SplashTokenizer in Frameworks */ = {isa = PBXBuildFile; productRef = 69523BFA2CDC6C7E0063729F /* SplashTokenizer */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		693B594B2CDA6141007FD28F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +60,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69523BF92CDC6C7E0063729F /* SplashMarkdown in Frameworks */,
+				69523BF72CDC6C7E0063729F /* SplashImageGen in Frameworks */,
+				69523BFB2CDC6C7E0063729F /* SplashTokenizer in Frameworks */,
+				69523BF32CDC6C7E0063729F /* Splash in Frameworks */,
+				69523BF52CDC6C7E0063729F /* SplashHTMLGen in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +125,11 @@
 			);
 			name = ComponentSwiftUI;
 			packageProductDependencies = (
+				69523BF22CDC6C7E0063729F /* Splash */,
+				69523BF42CDC6C7E0063729F /* SplashHTMLGen */,
+				69523BF62CDC6C7E0063729F /* SplashImageGen */,
+				69523BF82CDC6C7E0063729F /* SplashMarkdown */,
+				69523BFA2CDC6C7E0063729F /* SplashTokenizer */,
 			);
 			productName = ComponentSwiftUI;
 			productReference = 693B59392CDA613F007FD28F /* ComponentSwiftUI.app */;
@@ -195,6 +213,9 @@
 			);
 			mainGroup = 693B59302CDA613F007FD28F;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				693FB75F2CDAF5EB001BEACF /* XCRemoteSwiftPackageReference "Splash" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 693B593A2CDA613F007FD28F /* Products */;
 			projectDirPath = "";
@@ -591,6 +612,45 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		693FB75F2CDAF5EB001BEACF /* XCRemoteSwiftPackageReference "Splash" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/Splash";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.16.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		69523BF22CDC6C7E0063729F /* Splash */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 693FB75F2CDAF5EB001BEACF /* XCRemoteSwiftPackageReference "Splash" */;
+			productName = Splash;
+		};
+		69523BF42CDC6C7E0063729F /* SplashHTMLGen */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 693FB75F2CDAF5EB001BEACF /* XCRemoteSwiftPackageReference "Splash" */;
+			productName = SplashHTMLGen;
+		};
+		69523BF62CDC6C7E0063729F /* SplashImageGen */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 693FB75F2CDAF5EB001BEACF /* XCRemoteSwiftPackageReference "Splash" */;
+			productName = SplashImageGen;
+		};
+		69523BF82CDC6C7E0063729F /* SplashMarkdown */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 693FB75F2CDAF5EB001BEACF /* XCRemoteSwiftPackageReference "Splash" */;
+			productName = SplashMarkdown;
+		};
+		69523BFA2CDC6C7E0063729F /* SplashTokenizer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 693FB75F2CDAF5EB001BEACF /* XCRemoteSwiftPackageReference "Splash" */;
+			productName = SplashTokenizer;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 693B59312CDA613F007FD28F /* Project object */;
 }
